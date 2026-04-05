@@ -2,28 +2,302 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happywok</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy Wok | Henley-on-Thames Chinese Takeaway</title>
+  <meta name="description" content="Happy Wok, Henley-on-Thames. Premium Chinese takeaway website concept with online ordering, opening hours, menu highlights, gallery and contact details." />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            display: ['Georgia', 'serif'],
+            body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
+          },
+          boxShadow: {
+            glow: '0 0 0 1px rgba(255,255,255,0.05), 0 25px 60px rgba(0,0,0,0.35)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    .bg-luxury {
+      background:
+        radial-gradient(circle at top left, rgba(245, 158, 11, 0.14), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(239, 68, 68, 0.12), transparent 30%),
+        linear-gradient(180deg, #090909 0%, #111111 45%, #090909 100%);
+    }
+    .glass {
+      backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.04);
+    }
+  </style>
 </head>
+<body class="bg-luxury text-white font-body">
 
-<body class="bg-black text-white font-sans">
+  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+      <a href="#top" class="flex items-center gap-3">
+        <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-amber-300/30 bg-amber-300/10 text-amber-200 text-xl">🍜</div>
+        <div>
+          <div class="text-lg font-semibold tracking-[0.28em] text-amber-100">HAPPY WOK</div>
+          <div class="text-[11px] uppercase tracking-[0.3em] text-white/50">Henley-on-Thames Chinese Takeaway</div>
+        </div>
+      </a>
 
-<div class="min-h-screen flex flex-col items-center justify-center text-center px-6">
+      <nav class="hidden items-center gap-7 text-sm text-white/75 md:flex">
+        <a href="#menu" class="hover:text-white">Menu</a>
+        <a href="#gallery" class="hover:text-white">Gallery</a>
+        <a href="#reviews" class="hover:text-white">Reviews</a>
+        <a href="#hours" class="hover:text-white">Hours</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </nav>
 
-  <h1 class="text-5xl md:text-7xl font-bold text-amber-300 mb-6">
-    HAPPYWOK
-  </h1>
+      <div class="flex items-center gap-3">
+        <a href="tel:01491413883" class="hidden rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white hover:bg-white/10 sm:inline-flex">Call 01491 413 883</a>
+        <a href="https://orderhappywok.co.uk/info" class="rounded-full bg-amber-300 px-5 py-2.5 text-sm font-semibold text-black hover:bg-amber-200">Order Online</a>
+      </div>
+    </div>
+  </header>
 
-  <p class="text-xl text-white/70 max-w-xl mb-8">
-    Bold wok flavours. Luxury feel. A premium Asian takeaway experience.
-  </p>
+  <section id="top" class="relative overflow-hidden">
+    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:py-24">
+      <div class="flex flex-col justify-center">
+        <div class="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-amber-300/20 bg-amber-300/10 px-4 py-2 text-sm text-amber-100">
+          <span>★</span>
+          <span>Fresh website concept for Happy Wok</span>
+        </div>
+        <h1 class="font-display text-5xl leading-tight text-white md:text-6xl xl:text-7xl">
+          Henley’s Chinese takeaway,
+          <span class="text-amber-200">reimagined with style.</span>
+        </h1>
+        <p class="mt-6 max-w-2xl text-lg leading-8 text-white/70 md:text-xl">
+          A sleek premium website concept for Happy Wok, designed to turn local visitors into online orders with richer visuals, stronger calls to action and a cleaner customer journey.
+        </p>
 
-  <a href="#" class="bg-amber-300 text-black px-8 py-4 rounded-full text-lg font-semibold hover:bg-amber-200">
-    Order Now
-  </a>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="https://orderhappywok.co.uk/info" class="rounded-full bg-amber-300 px-7 py-4 text-base font-semibold text-black hover:bg-amber-200">Start Your Order</a>
+          <a href="#menu" class="rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base text-white hover:bg-white/10">Explore Sample Menu</a>
+        </div>
 
-</div>
+        <div class="mt-10 grid gap-4 sm:grid-cols-3">
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-glow">
+            <div class="text-sm uppercase tracking-[0.2em] text-amber-200">Collection</div>
+            <p class="mt-2 text-sm leading-6 text-white/65">Fast ordering flow with clear buttons and direct contact.</p>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-glow">
+            <div class="text-sm uppercase tracking-[0.2em] text-amber-200">Henley Local</div>
+            <p class="mt-2 text-sm leading-6 text-white/65">Built around the real Happy Wok address and phone details.</p>
+          </div>
+          <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-glow">
+            <div class="text-sm uppercase tracking-[0.2em] text-amber-200">High Conversion</div>
+            <p class="mt-2 text-sm leading-6 text-white/65">Designed to make ordering immediate and effortless.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="relative">
+        <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-amber-300/20 via-transparent to-red-400/10 blur-3xl"></div>
+        <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900 shadow-glow">
+          <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=80" alt="Chinese food spread" class="h-[320px] w-full object-cover md:h-[380px]" />
+          <div class="grid gap-4 p-6 md:grid-cols-2">
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <p class="text-xs uppercase tracking-[0.3em] text-white/45">Location</p>
+              <p class="mt-2 text-lg font-semibold">126 Greys Road</p>
+              <p class="text-white/65">Henley-on-Thames, RG9 1QW</p>
+            </div>
+            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
+              <p class="text-xs uppercase tracking-[0.3em] text-white/45">Phone</p>
+              <a href="tel:01491413883" class="mt-2 block text-lg font-semibold hover:text-amber-200">01491 413 883</a>
+              <p class="text-white/65">Call to order or enquire</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="border-y border-white/10 bg-white/[0.03]">
+    <div class="mx-auto grid max-w-7xl gap-8 px-6 py-12 lg:grid-cols-3 lg:px-10">
+      <div class="rounded-[1.75rem] border border-white/10 bg-black/20 p-6">
+        <p class="text-sm uppercase tracking-[0.28em] text-amber-200">Why this works</p>
+        <h2 class="mt-3 text-2xl font-semibold">Better first impression</h2>
+        <p class="mt-3 leading-7 text-white/68">The current site is functional. This concept makes the brand feel more premium, more trustworthy and far more tempting to order from.</p>
+      </div>
+      <div class="rounded-[1.75rem] border border-white/10 bg-black/20 p-6">
+        <p class="text-sm uppercase tracking-[0.28em] text-amber-200">Customer journey</p>
+        <h2 class="mt-3 text-2xl font-semibold">Cleaner order path</h2>
+        <p class="mt-3 leading-7 text-white/68">Visitors can instantly see the menu, the opening hours, the phone number and the order buttons without hunting around.</p>
+      </div>
+      <div class="rounded-[1.75rem] border border-white/10 bg-black/20 p-6">
+        <p class="text-sm uppercase tracking-[0.28em] text-amber-200">Visual identity</p>
+        <h2 class="mt-3 text-2xl font-semibold">Premium local takeaway feel</h2>
+        <p class="mt-3 leading-7 text-white/68">Dark luxury styling, warm food imagery and clear calls to action elevate the brand without losing its local identity.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="menu" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+    <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+      <div>
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Sample menu concept</p>
+        <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Classic Chinese favourites, presented beautifully</h2>
+      </div>
+      <p class="max-w-2xl text-white/65">These are placeholder dishes and sample prices to demonstrate structure and visual style. The final version would be updated with the real Happy Wok menu and pricing.</p>
+    </div>
+
+    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
+        <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=1200&q=80" alt="Sweet and sour chicken" class="h-48 w-full rounded-2xl object-cover" />
+        <h3 class="mt-5 text-2xl font-semibold">Sweet & Sour Chicken</h3>
+        <p class="mt-2 leading-7 text-white/65">Crispy chicken pieces in a glossy sweet and tangy sauce with peppers and pineapple.</p>
+        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Popular choice</span><span class="text-xl font-semibold">£5.00</span></div>
+      </div>
+
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
+        <img src="https://images.unsplash.com/photo-1512003867696-6d5ce6835040?auto=format&fit=crop&w=1200&q=80" alt="Chow mein" class="h-48 w-full rounded-2xl object-cover" />
+        <h3 class="mt-5 text-2xl font-semibold">Chicken Chow Mein</h3>
+        <p class="mt-2 leading-7 text-white/65">Wok tossed noodles with chicken, beansprouts, spring onion and savoury soy glaze.</p>
+        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">House favourite</span><span class="text-xl font-semibold">£5.00</span></div>
+      </div>
+
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
+        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=1200&q=80" alt="Egg fried rice" class="h-48 w-full rounded-2xl object-cover" />
+        <h3 class="mt-5 text-2xl font-semibold">Egg Fried Rice</h3>
+        <p class="mt-2 leading-7 text-white/65">Fluffy rice wok fried with egg, spring onion and light seasoning. Ideal alongside any main dish.</p>
+        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Essential side</span><span class="text-xl font-semibold">£5.00</span></div>
+      </div>
+
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
+        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="Crispy duck" class="h-48 w-full rounded-2xl object-cover" />
+        <h3 class="mt-5 text-2xl font-semibold">Crispy Shredded Duck</h3>
+        <p class="mt-2 leading-7 text-white/65">Tender shredded duck with cucumber, spring onion and a rich hoisin style sauce.</p>
+        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Premium pick</span><span class="text-xl font-semibold">£5.00</span></div>
+      </div>
+
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
+        <img src="https://images.unsplash.com/photo-1617622141573-30d85f8c8d17?auto=format&fit=crop&w=1200&q=80" alt="Spring rolls" class="h-48 w-full rounded-2xl object-cover" />
+        <h3 class="mt-5 text-2xl font-semibold">Vegetable Spring Rolls</h3>
+        <p class="mt-2 leading-7 text-white/65">Golden crisp spring rolls with a colourful vegetable filling and dipping sauce.</p>
+        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Starter</span><span class="text-xl font-semibold">£5.00</span></div>
+      </div>
+
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1200&q=80" alt="King prawn dish" class="h-48 w-full rounded-2xl object-cover" />
+        <h3 class="mt-5 text-2xl font-semibold">King Prawn in Black Bean Sauce</h3>
+        <p class="mt-2 leading-7 text-white/65">Juicy prawns with peppers and onion in a deep savoury black bean sauce.</p>
+        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Seafood</span><span class="text-xl font-semibold">£5.00</span></div>
+      </div>
+    </div>
+
+    <div class="mt-10 rounded-[2rem] border border-amber-300/20 bg-amber-300/10 p-6 md:flex md:items-center md:justify-between">
+      <div>
+        <p class="text-sm uppercase tracking-[0.25em] text-amber-100">Menu note</p>
+        <p class="mt-2 max-w-3xl leading-7 text-white/80">This menu is intentionally illustrative. It is there to sell the visual concept and structure. Real dishes, categories, descriptions and prices can all be swapped in quickly.</p>
+      </div>
+      <a href="https://orderhappywok.co.uk/info" class="mt-4 inline-flex rounded-full bg-black px-6 py-3 font-semibold text-amber-200 hover:bg-black/80 md:mt-0">Order Online</a>
+    </div>
+  </section>
+
+  <section id="gallery" class="border-y border-white/10 bg-white/[0.03]">
+    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+      <div class="mb-10">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Gallery feel</p>
+        <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Rich imagery that makes people hungry</h2>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80" alt="Chinese dish" class="h-72 w-full rounded-[1.75rem] object-cover" />
+        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80" alt="Wok cooking" class="h-72 w-full rounded-[1.75rem] object-cover" />
+        <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=1200&q=80" alt="Noodles" class="h-72 w-full rounded-[1.75rem] object-cover" />
+        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" alt="Takeaway dishes" class="h-72 w-full rounded-[1.75rem] object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+    <div class="mb-10">
+      <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Trust and social proof</p>
+      <h2 class="mt-3 text-3xl font-semibold md:text-4xl">A website that feels loved locally</h2>
+    </div>
+
+    <div class="grid gap-6 lg:grid-cols-3">
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7 shadow-glow">
+        <div class="text-amber-200">★★★★★</div>
+        <p class="mt-4 text-lg leading-8 text-white/72">Absolutely delicious food and a website that finally makes the place look as good as the food tastes.</p>
+        <p class="mt-5 text-sm uppercase tracking-[0.2em] text-white/45">Sample review</p>
+      </div>
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7 shadow-glow">
+        <div class="text-amber-200">★★★★★</div>
+        <p class="mt-4 text-lg leading-8 text-white/72">Clear menu, easy ordering, great presentation and a much more modern feel for a trusted local takeaway.</p>
+        <p class="mt-5 text-sm uppercase tracking-[0.2em] text-white/45">Sample review</p>
+      </div>
+      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7 shadow-glow">
+        <div class="text-amber-200">★★★★★</div>
+        <p class="mt-4 text-lg leading-8 text-white/72">This kind of layout gives the business much more credibility and would definitely increase online orders.</p>
+        <p class="mt-5 text-sm uppercase tracking-[0.2em] text-white/45">Sample review</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="hours" class="border-y border-white/10 bg-white/[0.03]">
+    <div class="mx-auto grid max-w-7xl gap-8 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
+      <div>
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Opening hours</p>
+        <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Clear and easy to scan</h2>
+        <p class="mt-5 max-w-xl leading-8 text-white/68">Opening times are kept simple and visible, reducing friction for hungry customers deciding when to order.</p>
+      </div>
+
+      <div class="grid gap-3">
+        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Monday</span><span class="text-white/65">Closed</span></div>
+        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Tuesday</span><span class="text-white/65">5:00 PM to 10:00 PM</span></div>
+        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Wednesday</span><span class="text-white/65">5:00 PM to 10:00 PM</span></div>
+        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Thursday</span><span class="text-white/65">5:00 PM to 10:00 PM</span></div>
+        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Friday</span><span class="text-white/65">5:00 PM to 10:30 PM</span></div>
+        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Saturday</span><span class="text-white/65">5:00 PM to 10:30 PM</span></div>
+        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Sunday</span><span class="text-white/65">5:00 PM to 10:00 PM</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
+    <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+      <div class="rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 shadow-glow md:p-10">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Contact and ordering</p>
+        <h2 class="mt-3 text-3xl font-semibold md:text-5xl">Ready to make this the new Happy Wok website?</h2>
+        <p class="mt-5 max-w-2xl text-lg leading-8 text-white/70">This concept is built to help Happy Wok feel more current, more premium and easier to order from. It can be refined with the real menu, logos, own photography and any delivery platform links.</p>
+
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="https://orderhappywok.co.uk/info" class="rounded-full bg-amber-300 px-7 py-4 text-base font-semibold text-black hover:bg-amber-200">Order Online</a>
+          <a href="tel:01491413883" class="rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base text-white hover:bg-white/10">Call Happy Wok</a>
+        </div>
+      </div>
+
+      <div class="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-red-400/10 p-8 shadow-glow md:p-10">
+        <p class="text-sm uppercase tracking-[0.3em] text-amber-100">Real details used</p>
+        <ul class="mt-6 space-y-4 text-white/80">
+          <li><strong>Business:</strong> Happy Wok</li>
+          <li><strong>Address:</strong> 126 Greys Road, Henley-on-Thames, RG9 1QW</li>
+          <li><strong>Phone:</strong> <a href="tel:01491413883" class="hover:text-amber-200">01491 413 883</a></li>
+          <li><strong>Ordering link:</strong> orderhappywok.co.uk</li>
+          <li><strong>Purpose:</strong> sales concept website to show layout, look and feel</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <footer class="border-t border-white/10 bg-black/40">
+    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-white/55 lg:flex-row lg:items-center lg:justify-between lg:px-10">
+      <p>Happy Wok website concept for presentation purposes.</p>
+      <div class="flex gap-5">
+        <a href="#menu" class="hover:text-white">Menu</a>
+        <a href="#hours" class="hover:text-white">Hours</a>
+        <a href="#contact" class="hover:text-white">Contact</a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 </html>
