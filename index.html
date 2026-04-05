@@ -1,31 +1,33 @@
-<!-- update -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Wok | Authentic Chinese Takeaway</title>
+  <title>Happy Wok | Authentic Chinese Takeaway in Henley-on-Thames</title>
   <meta
     name="description"
-    content="Happy Wok authentic Chinese takeaway. Browse the full menu, build your order, then call to place it quickly and easily."
+    content="Happy Wok authentic Chinese takeaway in Henley-on-Thames. Browse the full menu, build your order, then call to place it quickly and easily."
   />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0f0b0b;
-      --bg-soft: #171111;
-      --panel: rgba(30, 22, 22, 0.92);
+      --bg: #0d0a0a;
+      --bg-soft: #151010;
+      --panel: rgba(24, 18, 18, 0.94);
       --panel-light: rgba(255, 248, 238, 0.05);
-      --red: #8f1f1f;
-      --red-bright: #b12a2a;
-      --gold: #c7a35a;
-      --gold-soft: #e2c98a;
-      --text: #f5efe5;
-      --muted: #cdbfae;
-      --line: rgba(199, 163, 90, 0.25);
+      --red: #8d1f24;
+      --red-bright: #b32930;
+      --gold: #c8a45f;
+      --gold-soft: #e3c98d;
+      --text: #f5efe7;
+      --muted: #ccbfae;
+      --line: rgba(200, 164, 95, 0.22);
       --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
-      --radius: 18px;
-      --radius-sm: 12px;
-      --max: 1280px;
+      --radius: 20px;
+      --radius-sm: 14px;
+      --max: 1340px;
     }
 
     * {
@@ -38,10 +40,10 @@
 
     body {
       margin: 0;
-      font-family: "Georgia", "Times New Roman", serif;
+      font-family: "Inter", Arial, sans-serif;
       background:
-        radial-gradient(circle at top, rgba(177, 42, 42, 0.18), transparent 28%),
-        linear-gradient(180deg, #160f0f 0%, #0f0b0b 100%);
+        radial-gradient(circle at top, rgba(179, 41, 48, 0.18), transparent 28%),
+        linear-gradient(180deg, #151010 0%, #0d0a0a 100%);
       color: var(--text);
       line-height: 1.5;
     }
@@ -59,9 +61,9 @@
     .topbar {
       position: sticky;
       top: 0;
-      z-index: 999;
+      z-index: 1000;
       backdrop-filter: blur(16px);
-      background: rgba(12, 8, 8, 0.88);
+      background: rgba(10, 7, 7, 0.9);
       border-bottom: 1px solid var(--line);
     }
 
@@ -70,8 +72,8 @@
       margin: 0 auto;
       padding: 14px 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
+      align-items: center;
       gap: 16px;
     }
 
@@ -82,17 +84,18 @@
     }
 
     .brand-title {
-      font-size: 1.4rem;
+      font-family: "Noto Serif SC", serif;
+      font-size: 1.45rem;
+      color: var(--gold-soft);
       letter-spacing: 0.08em;
       text-transform: uppercase;
-      color: var(--gold-soft);
     }
 
     .brand-sub {
-      font-size: 0.84rem;
+      font-size: 0.82rem;
       color: var(--muted);
-      letter-spacing: 0.08em;
       text-transform: uppercase;
+      letter-spacing: 0.12em;
     }
 
     .top-actions {
@@ -110,19 +113,18 @@
       transition: 0.2s ease;
       cursor: pointer;
       border: 1px solid transparent;
+      font-weight: 700;
     }
 
     .phone-pill {
-      background: rgba(199, 163, 90, 0.12);
+      background: rgba(200, 164, 95, 0.12);
       color: var(--gold-soft);
-      border-color: rgba(199, 163, 90, 0.3);
-      font-weight: 700;
+      border-color: rgba(200, 164, 95, 0.3);
     }
 
     .btn {
       background: var(--red);
       color: #fff7ef;
-      font-weight: 700;
       box-shadow: var(--shadow);
     }
 
@@ -130,14 +132,14 @@
     .menu-card button:hover,
     .basket-actions button:hover,
     .qty-btn:hover,
-    .category-links a:hover {
+    .filter-btn:hover {
       transform: translateY(-1px);
       background: var(--red-bright);
     }
 
     .btn.secondary {
       background: transparent;
-      border: 1px solid rgba(199, 163, 90, 0.35);
+      border: 1px solid rgba(200, 164, 95, 0.35);
       color: var(--gold-soft);
       box-shadow: none;
     }
@@ -152,9 +154,9 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(rgba(10, 8, 8, 0.35), rgba(10, 8, 8, 0.7)),
+        linear-gradient(rgba(10, 8, 8, 0.35), rgba(10, 8, 8, 0.74)),
         url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80") center/cover;
-      opacity: 0.34;
+      opacity: 0.35;
       pointer-events: none;
     }
 
@@ -164,7 +166,7 @@
       margin: 0 auto;
       padding: 86px 20px 70px;
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
+      grid-template-columns: 1.08fr 0.92fr;
       gap: 28px;
       align-items: center;
     }
@@ -173,7 +175,8 @@
     .hero-card,
     .section-card,
     .basket-panel,
-    .contact-card {
+    .contact-card,
+    .menu-panel {
       background: var(--panel);
       border: 1px solid var(--line);
       border-radius: var(--radius);
@@ -188,22 +191,25 @@
       color: var(--gold-soft);
       text-transform: uppercase;
       letter-spacing: 0.18em;
-      font-size: 0.82rem;
+      font-size: 0.8rem;
       margin-bottom: 12px;
+      font-weight: 700;
     }
 
     h1 {
       margin: 0 0 16px;
-      font-size: clamp(2.2rem, 6vw, 4.2rem);
-      line-height: 1.05;
-      color: #fff5ea;
+      font-size: clamp(2.2rem, 6vw, 4.1rem);
+      line-height: 1.04;
+      color: #fff6eb;
+      font-weight: 800;
+      letter-spacing: -0.03em;
     }
 
     .hero-copy p {
       margin: 0 0 22px;
       color: var(--muted);
       max-width: 620px;
-      font-size: 1.06rem;
+      font-size: 1.05rem;
     }
 
     .hero-actions {
@@ -223,7 +229,7 @@
       padding: 10px 14px;
       border-radius: 999px;
       background: rgba(255, 248, 238, 0.04);
-      border: 1px solid rgba(199, 163, 90, 0.18);
+      border: 1px solid rgba(200, 164, 95, 0.18);
       color: var(--muted);
       font-size: 0.92rem;
     }
@@ -235,11 +241,13 @@
     .hero-card h2,
     .section-card h2,
     .basket-panel h2,
-    .contact-card h2 {
+    .contact-card h2,
+    .menu-panel h2 {
       margin: 0 0 14px;
       color: var(--gold-soft);
-      font-size: 1.35rem;
-      letter-spacing: 0.04em;
+      font-size: 1.3rem;
+      letter-spacing: 0.02em;
+      font-weight: 700;
     }
 
     .hero-card ol {
@@ -275,15 +283,6 @@
       align-items: start;
     }
 
-    .menu-panel,
-    .basket-panel,
-    .contact-card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
-
     .menu-panel {
       padding: 24px;
     }
@@ -297,49 +296,71 @@
       margin: 10px 0 0;
     }
 
-    .category-links {
+    .filters-wrap {
+      position: sticky;
+      top: 78px;
+      z-index: 50;
+      background: rgba(24, 18, 18, 0.97);
+      border: 1px solid rgba(200, 164, 95, 0.16);
+      border-radius: 18px;
+      padding: 14px;
+      margin: 18px 0 22px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.24);
+    }
+
+    .filter-buttons {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin: 16px 0 8px;
     }
 
-    .category-links a {
+    .filter-btn {
       background: rgba(255, 248, 238, 0.05);
-      border: 1px solid rgba(199, 163, 90, 0.18);
+      border: 1px solid rgba(200, 164, 95, 0.18);
       color: var(--muted);
-      padding: 9px 12px;
+      padding: 10px 13px;
       border-radius: 999px;
       font-size: 0.9rem;
       transition: 0.2s ease;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
     }
 
-    .menu-category {
-      margin-top: 26px;
-      padding-top: 18px;
-      border-top: 1px solid rgba(199, 163, 90, 0.15);
-    }
-
-    .menu-category h3 {
-      margin: 0 0 14px;
-      font-size: 1.2rem;
-      color: #fff1db;
+    .filter-btn.active {
+      background: var(--red);
+      color: #fff7ef;
+      border-color: transparent;
     }
 
     .menu-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
 
     .menu-card {
       background: var(--panel-light);
-      border: 1px solid rgba(199, 163, 90, 0.14);
+      border: 1px solid rgba(200, 164, 95, 0.14);
       border-radius: var(--radius-sm);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .menu-image {
+      aspect-ratio: 16 / 10;
+      width: 100%;
+      object-fit: cover;
+      background: #2b1f1f;
+    }
+
+    .menu-card-body {
       padding: 16px;
       display: flex;
       flex-direction: column;
       gap: 10px;
+      height: 100%;
     }
 
     .menu-card-top {
@@ -353,6 +374,8 @@
       margin: 0;
       font-size: 1rem;
       color: #fff5ea;
+      font-weight: 700;
+      line-height: 1.3;
     }
 
     .price {
@@ -362,11 +385,19 @@
       font-size: 0.98rem;
     }
 
+    .item-category {
+      color: #dcbf84;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
     .menu-card p {
       margin: 0;
       color: var(--muted);
-      font-size: 0.9rem;
-      min-height: 42px;
+      font-size: 0.92rem;
+      min-height: 44px;
     }
 
     .menu-card button {
@@ -379,6 +410,7 @@
       cursor: pointer;
       transition: 0.2s ease;
       font-family: inherit;
+      margin-top: auto;
     }
 
     .basket-panel {
@@ -401,7 +433,7 @@
 
     .basket-item {
       background: rgba(255, 248, 238, 0.04);
-      border: 1px solid rgba(199, 163, 90, 0.14);
+      border: 1px solid rgba(200, 164, 95, 0.14);
       border-radius: 14px;
       padding: 14px;
     }
@@ -458,7 +490,7 @@
     }
 
     .basket-total {
-      border-top: 1px solid rgba(199, 163, 90, 0.16);
+      border-top: 1px solid rgba(200, 164, 95, 0.16);
       padding-top: 16px;
       display: flex;
       justify-content: space-between;
@@ -492,7 +524,7 @@
     .basket-actions .copy-btn {
       background: transparent;
       color: var(--gold-soft);
-      border: 1px solid rgba(199, 163, 90, 0.32);
+      border: 1px solid rgba(200, 164, 95, 0.32);
     }
 
     .empty-basket {
@@ -500,7 +532,12 @@
       padding: 16px;
       border-radius: 14px;
       background: rgba(255, 248, 238, 0.03);
-      border: 1px dashed rgba(199, 163, 90, 0.2);
+      border: 1px dashed rgba(200, 164, 95, 0.2);
+    }
+
+    .contact-card {
+      padding: 28px;
+      margin-top: 24px;
     }
 
     .contact-grid {
@@ -514,7 +551,7 @@
       padding: 18px;
       border-radius: 14px;
       background: rgba(255, 248, 238, 0.04);
-      border: 1px solid rgba(199, 163, 90, 0.16);
+      border: 1px solid rgba(200, 164, 95, 0.16);
     }
 
     .contact-box h3 {
@@ -547,6 +584,10 @@
 
       .basket-panel {
         position: static;
+      }
+
+      .filters-wrap {
+        top: 72px;
       }
     }
 
@@ -584,6 +625,10 @@
       .btn {
         text-align: center;
       }
+
+      .filters-wrap {
+        top: 118px;
+      }
     }
   </style>
 </head>
@@ -595,7 +640,7 @@
         <div class="brand-sub">Authentic Chinese Takeaway</div>
       </div>
       <div class="top-actions">
-        <a class="phone-pill" href="tel:01491999999">Call 01491 999999</a>
+        <a class="phone-pill" href="tel:01491413883">Call 01491 413 883</a>
         <a class="btn secondary" href="#menu">View Menu</a>
         <a class="btn" href="#basket">Start Your Order</a>
       </div>
@@ -614,7 +659,7 @@
         </p>
         <div class="hero-actions">
           <a class="btn" href="#menu">Explore the Menu</a>
-          <a class="btn secondary" href="tel:01491999999">Call Now</a>
+          <a class="btn secondary" href="tel:01491413883">Call Now</a>
         </div>
         <div class="hero-notes">
           <div class="note">Full menu clearly laid out</div>
@@ -649,61 +694,16 @@
         <div class="menu-head">
           <h2>Full Menu</h2>
           <p>
-            Choose from classic Chinese takeaway dishes popular with UK customers. Tap
-            any item to add it to your basket and prepare your order before calling.
+            Tap a category to filter the menu without jumping down the page. Add dishes
+            to your basket, then call through your order when ready.
           </p>
         </div>
 
-        <div class="category-links">
-          <a href="#starters">Starters</a>
-          <a href="#duck">Duck</a>
-          <a href="#chicken">Chicken</a>
-          <a href="#beef">Beef</a>
-          <a href="#chowmein">Chow Mein</a>
-          <a href="#rice">Rice</a>
-          <a href="#specials">Chef's Specials</a>
-          <a href="#setmeals">Set Meals</a>
+        <div class="filters-wrap">
+          <div class="filter-buttons" id="filterButtons"></div>
         </div>
 
-        <div class="menu-category" id="starters">
-          <h3>Starters</h3>
-          <div class="menu-grid" data-category="Starters"></div>
-        </div>
-
-        <div class="menu-category" id="duck">
-          <h3>Duck Dishes</h3>
-          <div class="menu-grid" data-category="Duck Dishes"></div>
-        </div>
-
-        <div class="menu-category" id="chicken">
-          <h3>Chicken Dishes</h3>
-          <div class="menu-grid" data-category="Chicken Dishes"></div>
-        </div>
-
-        <div class="menu-category" id="beef">
-          <h3>Beef Dishes</h3>
-          <div class="menu-grid" data-category="Beef Dishes"></div>
-        </div>
-
-        <div class="menu-category" id="chowmein">
-          <h3>Chow Mein</h3>
-          <div class="menu-grid" data-category="Chow Mein"></div>
-        </div>
-
-        <div class="menu-category" id="rice">
-          <h3>Rice Dishes</h3>
-          <div class="menu-grid" data-category="Rice Dishes"></div>
-        </div>
-
-        <div class="menu-category" id="specials">
-          <h3>Chef's Specials</h3>
-          <div class="menu-grid" data-category="Chef's Specials"></div>
-        </div>
-
-        <div class="menu-category" id="setmeals">
-          <h3>Set Meals</h3>
-          <div class="menu-grid" data-category="Set Meals"></div>
-        </div>
+        <div class="menu-grid" id="menuGrid"></div>
       </section>
 
       <aside class="basket-panel" id="basket">
@@ -717,7 +717,7 @@
           <span id="basketTotal">£0.00</span>
         </div>
         <div class="basket-actions">
-          <a class="call-btn" href="tel:01491999999">Call Happy Wok</a>
+          <a class="call-btn" href="tel:01491413883">Call Happy Wok</a>
           <button class="copy-btn" id="copyOrderBtn">Copy Order List</button>
         </div>
       </aside>
@@ -728,22 +728,22 @@
       <div class="contact-grid">
         <div class="contact-box">
           <h3>Address</h3>
-          <p>123 Reading Road, Henley on Thames, Oxfordshire, RG9 1AA</p>
+          <p>126 Greys Road, Henley on Thames, RG9 1QW</p>
         </div>
         <div class="contact-box">
           <h3>Telephone</h3>
-          <p><a href="tel:01491999999">01491 999999</a></p>
+          <p><a href="tel:01491413883">01491 413 883</a></p>
         </div>
         <div class="contact-box">
           <h3>Opening Hours</h3>
-          <p>Mon to Sun<br />5:00pm to 10:30pm</p>
+          <p>Tuesday to Sunday<br>5:00pm to 10:00pm</p>
         </div>
       </div>
     </section>
   </main>
 
   <footer>
-    Happy Wok. Authentic Chinese takeaway with a simple call first ordering experience.
+    Happy Wok, 126 Greys Road, Henley on Thames, RG9 1QW • 01491 413 883
   </footer>
 
   <script>
@@ -752,197 +752,252 @@
         category: "Starters",
         name: "Vegetable Spring Rolls",
         price: 4.80,
-        description: "Crisp rolls filled with seasoned vegetables."
+        description: "Crisp rolls filled with seasoned vegetables.",
+        image: "https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Starters",
         name: "Prawn Toast",
         price: 5.90,
-        description: "Golden fried sesame prawn toast."
+        description: "Golden fried sesame prawn toast.",
+        image: "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Starters",
         name: "Crispy Seaweed",
         price: 4.90,
-        description: "Classic sweet and savoury crispy seaweed."
+        description: "Classic sweet and savoury crispy seaweed.",
+        image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Starters",
         name: "Salt and Pepper Chicken",
         price: 6.80,
-        description: "Lightly spiced crispy chicken pieces."
+        description: "Lightly spiced crispy chicken pieces.",
+        image: "https://images.unsplash.com/photo-1562967916-eb82221dfb92?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Duck Dishes",
         name: "Crispy Aromatic Duck Quarter",
         price: 10.90,
-        description: "Served with pancakes, cucumber, spring onion, and hoisin."
+        description: "Served with pancakes, cucumber, spring onion, and hoisin.",
+        image: "https://images.unsplash.com/photo-1617093727343-374698b1b08d?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Duck Dishes",
         name: "Roast Duck in Plum Sauce",
         price: 8.90,
-        description: "Tender roast duck in a rich plum glaze."
+        description: "Tender roast duck in a rich plum glaze.",
+        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Duck Dishes",
         name: "Duck with Mushrooms",
         price: 8.70,
-        description: "Sliced duck stir fried with mushrooms."
+        description: "Sliced duck stir fried with mushrooms.",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chicken Dishes",
         name: "Sweet and Sour Chicken Hong Kong Style",
         price: 8.20,
-        description: "A British takeaway favourite with vibrant sweet and sour sauce."
+        description: "A British takeaway favourite with vibrant sweet and sour sauce.",
+        image: "https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chicken Dishes",
         name: "Chicken Curry",
         price: 8.10,
-        description: "Classic Chinese curry with tender chicken."
+        description: "Classic Chinese curry with tender chicken.",
+        image: "https://images.unsplash.com/photo-1604908176997-4319d7c89f26?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chicken Dishes",
         name: "Kung Po Chicken",
         price: 8.40,
-        description: "Chicken with chilli, peanuts, and vegetables."
+        description: "Chicken with chilli, peanuts, and vegetables.",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chicken Dishes",
         name: "Chicken in Black Bean Sauce",
         price: 8.40,
-        description: "Savoury black bean sauce with peppers and onions."
+        description: "Savoury black bean sauce with peppers and onions.",
+        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Beef Dishes",
         name: "Beef in Black Bean Sauce",
         price: 8.90,
-        description: "Tender beef cooked in a classic black bean sauce."
+        description: "Tender beef cooked in a classic black bean sauce.",
+        image: "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Beef Dishes",
         name: "Crispy Shredded Beef",
         price: 9.20,
-        description: "Crispy strips of beef in a sweet chilli glaze."
+        description: "Crispy strips of beef in a sweet chilli glaze.",
+        image: "https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Beef Dishes",
         name: "Beef with Green Peppers",
         price: 8.80,
-        description: "A comforting takeaway classic with peppers and onion."
+        description: "A comforting takeaway classic with peppers and onion.",
+        image: "https://images.unsplash.com/photo-1529042410759-befb1204b468?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chow Mein",
         name: "Chicken Chow Mein",
         price: 7.90,
-        description: "Soft noodles with chicken and vegetables."
+        description: "Soft noodles with chicken and vegetables.",
+        image: "https://images.unsplash.com/photo-1612929633738-8fe44f7ec841?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chow Mein",
         name: "Beef Chow Mein",
         price: 8.30,
-        description: "Stir fried noodles with sliced beef."
+        description: "Stir fried noodles with sliced beef.",
+        image: "https://images.unsplash.com/photo-1585032226651-759b368d7246?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chow Mein",
         name: "Special Chow Mein",
         price: 8.90,
-        description: "Chicken, beef, prawns, and vegetables."
+        description: "Chicken, beef, prawns, and vegetables.",
+        image: "https://images.unsplash.com/photo-1512003867696-6d5ce6835040?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Rice Dishes",
         name: "Egg Fried Rice",
         price: 3.90,
-        description: "Fluffy rice with egg and spring onion."
+        description: "Fluffy rice with egg and spring onion.",
+        image: "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Rice Dishes",
         name: "Special Fried Rice",
         price: 7.60,
-        description: "A full takeaway favourite packed with mixed meats."
+        description: "A full takeaway favourite packed with mixed meats.",
+        image: "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Rice Dishes",
         name: "Boiled Rice",
         price: 3.40,
-        description: "Perfect alongside your chosen dishes."
+        description: "Perfect alongside your chosen dishes.",
+        image: "https://images.unsplash.com/photo-1536304993881-ff6e9eefa2a6?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chef's Specials",
         name: "Happy Wok Special",
         price: 9.80,
-        description: "Mixed meat, king prawns, and seasonal vegetables in chef's sauce."
+        description: "Mixed meat, king prawns, and seasonal vegetables in chef's sauce.",
+        image: "https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chef's Specials",
         name: "King Prawn Satay",
         price: 9.60,
-        description: "King prawns in a rich satay sauce."
+        description: "King prawns in a rich satay sauce.",
+        image: "https://images.unsplash.com/photo-1565299585323-38174c4a6b66?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Chef's Specials",
         name: "Salt and Pepper King Prawns",
         price: 9.70,
-        description: "Crispy king prawns with garlic, chilli, and onion."
+        description: "Crispy king prawns with garlic, chilli, and onion.",
+        image: "https://images.unsplash.com/photo-1625944230945-1b7dd3b949ab?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Set Meals",
         name: "Set Meal for One",
         price: 13.90,
-        description: "Starter, main dish, and rice or noodles."
+        description: "Starter, main dish, and rice or noodles.",
+        image: "https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Set Meals",
         name: "Set Meal for Two",
         price: 28.90,
-        description: "A balanced selection of favourites for two people."
+        description: "A balanced selection of favourites for two people.",
+        image: "https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=900&q=80"
       },
       {
         category: "Set Meals",
         name: "Family Meal",
         price: 42.90,
-        description: "A generous selection ideal for sharing."
+        description: "A generous selection ideal for sharing.",
+        image: "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=900&q=80"
       }
     ];
 
+    const categories = [
+      "All",
+      "Starters",
+      "Duck Dishes",
+      "Chicken Dishes",
+      "Beef Dishes",
+      "Chow Mein",
+      "Rice Dishes",
+      "Chef's Specials",
+      "Set Meals"
+    ];
+
+    let activeCategory = "All";
     const basket = [];
 
     function formatPrice(value) {
       return `£${value.toFixed(2)}`;
     }
 
-    function slugify(text) {
-      return text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    function escapeApostrophes(text) {
+      return text.replace(/'/g, "\\'");
+    }
+
+    function renderFilters() {
+      const filterButtons = document.getElementById("filterButtons");
+      filterButtons.innerHTML = categories.map(category => `
+        <button
+          class="filter-btn ${category === activeCategory ? "active" : ""}"
+          onclick="setCategory('${escapeApostrophes(category)}')"
+        >
+          ${category}
+        </button>
+      `).join("");
     }
 
     function renderMenu() {
-      const categoryContainers = document.querySelectorAll(".menu-grid");
+      const menuGrid = document.getElementById("menuGrid");
+      const visibleItems = activeCategory === "All"
+        ? menuItems
+        : menuItems.filter(item => item.category === activeCategory);
 
-      categoryContainers.forEach((container) => {
-        const category = container.dataset.category;
-        const items = menuItems.filter((item) => item.category === category);
+      menuGrid.innerHTML = visibleItems.map(item => `
+        <article class="menu-card">
+          <img class="menu-image" src="${item.image}" alt="${item.name}">
+          <div class="menu-card-body">
+            <div class="item-category">${item.category}</div>
+            <div class="menu-card-top">
+              <h4>${item.name}</h4>
+              <span class="price">${formatPrice(item.price)}</span>
+            </div>
+            <p>${item.description}</p>
+            <button onclick="addToBasket('${escapeApostrophes(item.name)}')">Add to Order</button>
+          </div>
+        </article>
+      `).join("");
+    }
 
-        container.innerHTML = items
-          .map(
-            (item) => `
-              <article class="menu-card">
-                <div class="menu-card-top">
-                  <h4>${item.name}</h4>
-                  <span class="price">${formatPrice(item.price)}</span>
-                </div>
-                <p>${item.description}</p>
-                <button onclick="addToBasket('${item.name.replace(/'/g, "\\'")}')">Add to Order</button>
-              </article>
-            `
-          )
-          .join("");
-      });
+    function setCategory(category) {
+      activeCategory = category;
+      renderFilters();
+      renderMenu();
     }
 
     function addToBasket(name) {
-      const foundMenuItem = menuItems.find((item) => item.name === name);
-      const existing = basket.find((item) => item.name === name);
+      const foundMenuItem = menuItems.find(item => item.name === name);
+      const existing = basket.find(item => item.name === name);
 
       if (existing) {
         existing.qty += 1;
@@ -959,7 +1014,7 @@
     }
 
     function changeQty(name, change) {
-      const item = basket.find((entry) => entry.name === name);
+      const item = basket.find(entry => entry.name === name);
       if (!item) return;
 
       item.qty += change;
@@ -973,7 +1028,7 @@
     }
 
     function removeItem(name) {
-      const index = basket.findIndex((item) => item.name === name);
+      const index = basket.findIndex(item => item.name === name);
       if (index !== -1) {
         basket.splice(index, 1);
       }
@@ -998,27 +1053,23 @@
         return;
       }
 
-      basketList.innerHTML = basket
-        .map(
-          (item) => `
-            <div class="basket-item">
-              <div class="basket-row">
-                <div>
-                  <div class="basket-name">${item.name}</div>
-                  <div class="basket-meta">${formatPrice(item.price)} each</div>
-                </div>
-                <div class="basket-name">${formatPrice(item.price * item.qty)}</div>
-              </div>
-              <div class="basket-controls">
-                <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', -1)">−</button>
-                <span>Qty ${item.qty}</span>
-                <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', 1)">+</button>
-                <button class="remove-btn" onclick="removeItem('${item.name.replace(/'/g, "\\'")}')">Remove</button>
-              </div>
+      basketList.innerHTML = basket.map(item => `
+        <div class="basket-item">
+          <div class="basket-row">
+            <div>
+              <div class="basket-name">${item.name}</div>
+              <div class="basket-meta">${formatPrice(item.price)} each</div>
             </div>
-          `
-        )
-        .join("");
+            <div class="basket-name">${formatPrice(item.price * item.qty)}</div>
+          </div>
+          <div class="basket-controls">
+            <button class="qty-btn" onclick="changeQty('${escapeApostrophes(item.name)}', -1)">−</button>
+            <span>Qty ${item.qty}</span>
+            <button class="qty-btn" onclick="changeQty('${escapeApostrophes(item.name)}', 1)">+</button>
+            <button class="remove-btn" onclick="removeItem('${escapeApostrophes(item.name)}')">Remove</button>
+          </div>
+        </div>
+      `).join("");
 
       basketTotal.textContent = formatPrice(getTotal());
     }
@@ -1032,9 +1083,11 @@
       const lines = [
         "Happy Wok Order",
         "",
-        ...basket.map((item) => `${item.qty} x ${item.name} ${formatPrice(item.price * item.qty)}`),
+        ...basket.map(item => `${item.qty} x ${item.name} ${formatPrice(item.price * item.qty)}`),
         "",
-        `Total: ${formatPrice(getTotal())}`
+        `Total: ${formatPrice(getTotal())}`,
+        "",
+        "Call: 01491 413 883"
       ];
 
       navigator.clipboard.writeText(lines.join("\n"))
@@ -1048,6 +1101,7 @@
 
     document.getElementById("copyOrderBtn").addEventListener("click", copyOrderList);
 
+    renderFilters();
     renderMenu();
     renderBasket();
   </script>
