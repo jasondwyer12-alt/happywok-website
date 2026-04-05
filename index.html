@@ -3,301 +3,1052 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Happy Wok | Henley-on-Thames Chinese Takeaway</title>
-  <meta name="description" content="Happy Wok, Henley-on-Thames. Premium Chinese takeaway website concept with online ordering, opening hours, menu highlights, gallery and contact details." />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            display: ['Georgia', 'serif'],
-            body: ['Inter', 'ui-sans-serif', 'system-ui', 'sans-serif']
-          },
-          boxShadow: {
-            glow: '0 0 0 1px rgba(255,255,255,0.05), 0 25px 60px rgba(0,0,0,0.35)'
-          }
-        }
+  <title>Happy Wok | Authentic Chinese Takeaway</title>
+  <meta
+    name="description"
+    content="Happy Wok authentic Chinese takeaway. Browse the full menu, build your order, then call to place it quickly and easily."
+  />
+  <style>
+    :root {
+      --bg: #0f0b0b;
+      --bg-soft: #171111;
+      --panel: rgba(30, 22, 22, 0.92);
+      --panel-light: rgba(255, 248, 238, 0.05);
+      --red: #8f1f1f;
+      --red-bright: #b12a2a;
+      --gold: #c7a35a;
+      --gold-soft: #e2c98a;
+      --text: #f5efe5;
+      --muted: #cdbfae;
+      --line: rgba(199, 163, 90, 0.25);
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.45);
+      --radius: 18px;
+      --radius-sm: 12px;
+      --max: 1280px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Georgia", "Times New Roman", serif;
+      background:
+        radial-gradient(circle at top, rgba(177, 42, 42, 0.18), transparent 28%),
+        linear-gradient(180deg, #160f0f 0%, #0f0b0b 100%);
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      backdrop-filter: blur(16px);
+      background: rgba(12, 8, 8, 0.88);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-size: 1.4rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--gold-soft);
+    }
+
+    .brand-sub {
+      font-size: 0.84rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .top-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .phone-pill,
+    .btn {
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-size: 0.95rem;
+      transition: 0.2s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .phone-pill {
+      background: rgba(199, 163, 90, 0.12);
+      color: var(--gold-soft);
+      border-color: rgba(199, 163, 90, 0.3);
+      font-weight: 700;
+    }
+
+    .btn {
+      background: var(--red);
+      color: #fff7ef;
+      font-weight: 700;
+      box-shadow: var(--shadow);
+    }
+
+    .btn:hover,
+    .menu-card button:hover,
+    .basket-actions button:hover,
+    .qty-btn:hover,
+    .category-links a:hover {
+      transform: translateY(-1px);
+      background: var(--red-bright);
+    }
+
+    .btn.secondary {
+      background: transparent;
+      border: 1px solid rgba(199, 163, 90, 0.35);
+      color: var(--gold-soft);
+      box-shadow: none;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(rgba(10, 8, 8, 0.35), rgba(10, 8, 8, 0.7)),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80") center/cover;
+      opacity: 0.34;
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 86px 20px 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero-copy,
+    .hero-card,
+    .section-card,
+    .basket-panel,
+    .contact-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 38px;
+    }
+
+    .eyebrow {
+      color: var(--gold-soft);
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.82rem;
+      margin-bottom: 12px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.2rem, 6vw, 4.2rem);
+      line-height: 1.05;
+      color: #fff5ea;
+    }
+
+    .hero-copy p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      max-width: 620px;
+      font-size: 1.06rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .hero-notes {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .note {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255, 248, 238, 0.04);
+      border: 1px solid rgba(199, 163, 90, 0.18);
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .hero-card {
+      padding: 28px;
+    }
+
+    .hero-card h2,
+    .section-card h2,
+    .basket-panel h2,
+    .contact-card h2 {
+      margin: 0 0 14px;
+      color: var(--gold-soft);
+      font-size: 1.35rem;
+      letter-spacing: 0.04em;
+    }
+
+    .hero-card ol {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    .hero-card li {
+      margin-bottom: 12px;
+    }
+
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 20px 40px;
+    }
+
+    .section-card {
+      padding: 28px;
+      margin-bottom: 24px;
+    }
+
+    .section-card p {
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .menu-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+      align-items: start;
+    }
+
+    .menu-panel,
+    .basket-panel,
+    .contact-card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .menu-panel {
+      padding: 24px;
+    }
+
+    .menu-head {
+      margin-bottom: 18px;
+    }
+
+    .menu-head p {
+      color: var(--muted);
+      margin: 10px 0 0;
+    }
+
+    .category-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 16px 0 8px;
+    }
+
+    .category-links a {
+      background: rgba(255, 248, 238, 0.05);
+      border: 1px solid rgba(199, 163, 90, 0.18);
+      color: var(--muted);
+      padding: 9px 12px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      transition: 0.2s ease;
+    }
+
+    .menu-category {
+      margin-top: 26px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(199, 163, 90, 0.15);
+    }
+
+    .menu-category h3 {
+      margin: 0 0 14px;
+      font-size: 1.2rem;
+      color: #fff1db;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .menu-card {
+      background: var(--panel-light);
+      border: 1px solid rgba(199, 163, 90, 0.14);
+      border-radius: var(--radius-sm);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .menu-card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: start;
+      gap: 12px;
+    }
+
+    .menu-card h4 {
+      margin: 0;
+      font-size: 1rem;
+      color: #fff5ea;
+    }
+
+    .price {
+      white-space: nowrap;
+      color: var(--gold-soft);
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+
+    .menu-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+      min-height: 42px;
+    }
+
+    .menu-card button {
+      border: 0;
+      border-radius: 999px;
+      background: var(--red);
+      color: white;
+      font-weight: 700;
+      padding: 11px 14px;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-family: inherit;
+    }
+
+    .basket-panel {
+      position: sticky;
+      top: 84px;
+      padding: 24px;
+    }
+
+    .basket-panel p {
+      color: var(--muted);
+      margin-top: 0;
+    }
+
+    .basket-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 18px 0;
+    }
+
+    .basket-item {
+      background: rgba(255, 248, 238, 0.04);
+      border: 1px solid rgba(199, 163, 90, 0.14);
+      border-radius: 14px;
+      padding: 14px;
+    }
+
+    .basket-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .basket-name {
+      font-weight: 700;
+      color: #fff5ea;
+    }
+
+    .basket-meta {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin-top: 3px;
+    }
+
+    .basket-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+    }
+
+    .qty-btn,
+    .remove-btn,
+    .basket-actions button {
+      border: 0;
+      cursor: pointer;
+      font-family: inherit;
+      transition: 0.2s ease;
+    }
+
+    .qty-btn {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 248, 238, 0.08);
+      color: var(--text);
+      font-size: 1rem;
+    }
+
+    .remove-btn {
+      background: transparent;
+      color: #f0b8b8;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .basket-total {
+      border-top: 1px solid rgba(199, 163, 90, 0.16);
+      padding-top: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 10px;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #fff3df;
+    }
+
+    .basket-actions {
+      display: grid;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .basket-actions button,
+    .basket-actions a {
+      width: 100%;
+      text-align: center;
+      border-radius: 999px;
+      padding: 13px 16px;
+      font-weight: 700;
+    }
+
+    .basket-actions .call-btn {
+      background: var(--red);
+      color: white;
+    }
+
+    .basket-actions .copy-btn {
+      background: transparent;
+      color: var(--gold-soft);
+      border: 1px solid rgba(199, 163, 90, 0.32);
+    }
+
+    .empty-basket {
+      color: var(--muted);
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(255, 248, 238, 0.03);
+      border: 1px dashed rgba(199, 163, 90, 0.2);
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-box {
+      padding: 18px;
+      border-radius: 14px;
+      background: rgba(255, 248, 238, 0.04);
+      border: 1px solid rgba(199, 163, 90, 0.16);
+    }
+
+    .contact-box h3 {
+      margin: 0 0 8px;
+      color: var(--gold-soft);
+      font-size: 1rem;
+    }
+
+    .contact-box p,
+    .contact-box a {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    footer {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 24px 20px 40px;
+      color: rgba(245, 239, 229, 0.65);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    @media (max-width: 980px) {
+      .hero-inner,
+      .menu-layout,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .basket-panel {
+        position: static;
       }
     }
-  </script>
-  <style>
-    html { scroll-behavior: smooth; }
-    .bg-luxury {
-      background:
-        radial-gradient(circle at top left, rgba(245, 158, 11, 0.14), transparent 35%),
-        radial-gradient(circle at bottom right, rgba(239, 68, 68, 0.12), transparent 30%),
-        linear-gradient(180deg, #090909 0%, #111111 45%, #090909 100%);
-    }
-    .glass {
-      backdrop-filter: blur(10px);
-      background: rgba(255,255,255,0.04);
+
+    @media (max-width: 700px) {
+      .topbar-inner,
+      .hero-actions,
+      .top-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .menu-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .hero-card,
+      .section-card,
+      .menu-panel,
+      .basket-panel,
+      .contact-card {
+        padding: 20px;
+      }
+
+      .hero-inner {
+        padding-top: 44px;
+      }
+
+      .brand-title,
+      .brand-sub {
+        text-align: center;
+      }
+
+      .phone-pill,
+      .btn {
+        text-align: center;
+      }
     }
   </style>
 </head>
-<body class="bg-luxury text-white font-body">
-
-  <header class="sticky top-0 z-50 border-b border-white/10 bg-black/70 backdrop-blur">
-    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
-      <a href="#top" class="flex items-center gap-3">
-        <div class="flex h-11 w-11 items-center justify-center rounded-2xl border border-amber-300/30 bg-amber-300/10 text-amber-200 text-xl">🍜</div>
-        <div>
-          <div class="text-lg font-semibold tracking-[0.28em] text-amber-100">HAPPY WOK</div>
-          <div class="text-[11px] uppercase tracking-[0.3em] text-white/50">Henley-on-Thames Chinese Takeaway</div>
-        </div>
-      </a>
-
-      <nav class="hidden items-center gap-7 text-sm text-white/75 md:flex">
-        <a href="#menu" class="hover:text-white">Menu</a>
-        <a href="#gallery" class="hover:text-white">Gallery</a>
-        <a href="#reviews" class="hover:text-white">Reviews</a>
-        <a href="#hours" class="hover:text-white">Hours</a>
-        <a href="#contact" class="hover:text-white">Contact</a>
-      </nav>
-
-      <div class="flex items-center gap-3">
-        <a href="tel:01491413883" class="hidden rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm text-white hover:bg-white/10 sm:inline-flex">Call 01491 413 883</a>
-        <a href="https://orderhappywok.co.uk/info" class="rounded-full bg-amber-300 px-5 py-2.5 text-sm font-semibold text-black hover:bg-amber-200">Order Online</a>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">
+        <div class="brand-title">Happy Wok</div>
+        <div class="brand-sub">Authentic Chinese Takeaway</div>
+      </div>
+      <div class="top-actions">
+        <a class="phone-pill" href="tel:01491999999">Call 01491 999999</a>
+        <a class="btn secondary" href="#menu">View Menu</a>
+        <a class="btn" href="#basket">Start Your Order</a>
       </div>
     </div>
   </header>
 
-  <section id="top" class="relative overflow-hidden">
-    <div class="mx-auto grid max-w-7xl gap-10 px-6 py-14 lg:grid-cols-[1.05fr_0.95fr] lg:px-10 lg:py-24">
-      <div class="flex flex-col justify-center">
-        <div class="mb-5 inline-flex w-fit items-center gap-2 rounded-full border border-amber-300/20 bg-amber-300/10 px-4 py-2 text-sm text-amber-100">
-          <span>★</span>
-          <span>Fresh website concept for Happy Wok</span>
-        </div>
-        <h1 class="font-display text-5xl leading-tight text-white md:text-6xl xl:text-7xl">
-          Henley’s Chinese takeaway,
-          <span class="text-amber-200">reimagined with style.</span>
-        </h1>
-        <p class="mt-6 max-w-2xl text-lg leading-8 text-white/70 md:text-xl">
-          A sleek premium website concept for Happy Wok, designed to turn local visitors into online orders with richer visuals, stronger calls to action and a cleaner customer journey.
+  <section class="hero">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="eyebrow">Classic Chinese flavours, beautifully presented</div>
+        <h1>Elegant Chinese takeaway, made for easy ordering by phone.</h1>
+        <p>
+          Browse the full menu, build your order, and keep your selected dishes neatly
+          together before calling through. Familiar favourites, authentic style, and a
+          simple experience from start to finish.
         </p>
-
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a href="https://orderhappywok.co.uk/info" class="rounded-full bg-amber-300 px-7 py-4 text-base font-semibold text-black hover:bg-amber-200">Start Your Order</a>
-          <a href="#menu" class="rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base text-white hover:bg-white/10">Explore Sample Menu</a>
+        <div class="hero-actions">
+          <a class="btn" href="#menu">Explore the Menu</a>
+          <a class="btn secondary" href="tel:01491999999">Call Now</a>
         </div>
-
-        <div class="mt-10 grid gap-4 sm:grid-cols-3">
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-glow">
-            <div class="text-sm uppercase tracking-[0.2em] text-amber-200">Collection</div>
-            <p class="mt-2 text-sm leading-6 text-white/65">Fast ordering flow with clear buttons and direct contact.</p>
-          </div>
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-glow">
-            <div class="text-sm uppercase tracking-[0.2em] text-amber-200">Henley Local</div>
-            <p class="mt-2 text-sm leading-6 text-white/65">Built around the real Happy Wok address and phone details.</p>
-          </div>
-          <div class="rounded-3xl border border-white/10 bg-white/5 p-5 shadow-glow">
-            <div class="text-sm uppercase tracking-[0.2em] text-amber-200">High Conversion</div>
-            <p class="mt-2 text-sm leading-6 text-white/65">Designed to make ordering immediate and effortless.</p>
-          </div>
+        <div class="hero-notes">
+          <div class="note">Full menu clearly laid out</div>
+          <div class="note">Build your basket before you call</div>
+          <div class="note">Simple, fast, mobile friendly</div>
         </div>
       </div>
 
-      <div class="relative">
-        <div class="absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-amber-300/20 via-transparent to-red-400/10 blur-3xl"></div>
-        <div class="relative overflow-hidden rounded-[2rem] border border-white/10 bg-neutral-900 shadow-glow">
-          <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1400&q=80" alt="Chinese food spread" class="h-[320px] w-full object-cover md:h-[380px]" />
-          <div class="grid gap-4 p-6 md:grid-cols-2">
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-              <p class="text-xs uppercase tracking-[0.3em] text-white/45">Location</p>
-              <p class="mt-2 text-lg font-semibold">126 Greys Road</p>
-              <p class="text-white/65">Henley-on-Thames, RG9 1QW</p>
-            </div>
-            <div class="rounded-2xl border border-white/10 bg-white/5 p-5">
-              <p class="text-xs uppercase tracking-[0.3em] text-white/45">Phone</p>
-              <a href="tel:01491413883" class="mt-2 block text-lg font-semibold hover:text-amber-200">01491 413 883</a>
-              <p class="text-white/65">Call to order or enquire</p>
-            </div>
-          </div>
+      <div class="hero-card">
+        <h2>How it works</h2>
+        <ol>
+          <li>Browse the dishes and tap to add your favourites.</li>
+          <li>Keep everything in your basket with quantities and total.</li>
+          <li>Call Happy Wok and read out your selected items with ease.</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <section class="section-card">
+      <h2>Welcome to Happy Wok</h2>
+      <p>
+        Happy Wok is designed to feel rich, authentic, and easy to use. The focus is on
+        the menu, with a premium Chinese visual style and a practical basket system that
+        helps customers build an order before calling.
+      </p>
+    </section>
+
+    <section class="menu-layout">
+      <section class="menu-panel" id="menu">
+        <div class="menu-head">
+          <h2>Full Menu</h2>
+          <p>
+            Choose from classic Chinese takeaway dishes popular with UK customers. Tap
+            any item to add it to your basket and prepare your order before calling.
+          </p>
+        </div>
+
+        <div class="category-links">
+          <a href="#starters">Starters</a>
+          <a href="#duck">Duck</a>
+          <a href="#chicken">Chicken</a>
+          <a href="#beef">Beef</a>
+          <a href="#chowmein">Chow Mein</a>
+          <a href="#rice">Rice</a>
+          <a href="#specials">Chef's Specials</a>
+          <a href="#setmeals">Set Meals</a>
+        </div>
+
+        <div class="menu-category" id="starters">
+          <h3>Starters</h3>
+          <div class="menu-grid" data-category="Starters"></div>
+        </div>
+
+        <div class="menu-category" id="duck">
+          <h3>Duck Dishes</h3>
+          <div class="menu-grid" data-category="Duck Dishes"></div>
+        </div>
+
+        <div class="menu-category" id="chicken">
+          <h3>Chicken Dishes</h3>
+          <div class="menu-grid" data-category="Chicken Dishes"></div>
+        </div>
+
+        <div class="menu-category" id="beef">
+          <h3>Beef Dishes</h3>
+          <div class="menu-grid" data-category="Beef Dishes"></div>
+        </div>
+
+        <div class="menu-category" id="chowmein">
+          <h3>Chow Mein</h3>
+          <div class="menu-grid" data-category="Chow Mein"></div>
+        </div>
+
+        <div class="menu-category" id="rice">
+          <h3>Rice Dishes</h3>
+          <div class="menu-grid" data-category="Rice Dishes"></div>
+        </div>
+
+        <div class="menu-category" id="specials">
+          <h3>Chef's Specials</h3>
+          <div class="menu-grid" data-category="Chef's Specials"></div>
+        </div>
+
+        <div class="menu-category" id="setmeals">
+          <h3>Set Meals</h3>
+          <div class="menu-grid" data-category="Set Meals"></div>
+        </div>
+      </section>
+
+      <aside class="basket-panel" id="basket">
+        <h2>Your Selected Order</h2>
+        <p>
+          This basket is designed to help you prepare your order before calling Happy Wok.
+        </p>
+        <div class="basket-list" id="basketList"></div>
+        <div class="basket-total">
+          <span>Total</span>
+          <span id="basketTotal">£0.00</span>
+        </div>
+        <div class="basket-actions">
+          <a class="call-btn" href="tel:01491999999">Call Happy Wok</a>
+          <button class="copy-btn" id="copyOrderBtn">Copy Order List</button>
+        </div>
+      </aside>
+    </section>
+
+    <section class="contact-card">
+      <h2>Visit or Call</h2>
+      <div class="contact-grid">
+        <div class="contact-box">
+          <h3>Address</h3>
+          <p>123 Reading Road, Henley on Thames, Oxfordshire, RG9 1AA</p>
+        </div>
+        <div class="contact-box">
+          <h3>Telephone</h3>
+          <p><a href="tel:01491999999">01491 999999</a></p>
+        </div>
+        <div class="contact-box">
+          <h3>Opening Hours</h3>
+          <p>Mon to Sun<br />5:00pm to 10:30pm</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </main>
 
-  <section class="border-y border-white/10 bg-white/[0.03]">
-    <div class="mx-auto grid max-w-7xl gap-8 px-6 py-12 lg:grid-cols-3 lg:px-10">
-      <div class="rounded-[1.75rem] border border-white/10 bg-black/20 p-6">
-        <p class="text-sm uppercase tracking-[0.28em] text-amber-200">Why this works</p>
-        <h2 class="mt-3 text-2xl font-semibold">Better first impression</h2>
-        <p class="mt-3 leading-7 text-white/68">The current site is functional. This concept makes the brand feel more premium, more trustworthy and far more tempting to order from.</p>
-      </div>
-      <div class="rounded-[1.75rem] border border-white/10 bg-black/20 p-6">
-        <p class="text-sm uppercase tracking-[0.28em] text-amber-200">Customer journey</p>
-        <h2 class="mt-3 text-2xl font-semibold">Cleaner order path</h2>
-        <p class="mt-3 leading-7 text-white/68">Visitors can instantly see the menu, the opening hours, the phone number and the order buttons without hunting around.</p>
-      </div>
-      <div class="rounded-[1.75rem] border border-white/10 bg-black/20 p-6">
-        <p class="text-sm uppercase tracking-[0.28em] text-amber-200">Visual identity</p>
-        <h2 class="mt-3 text-2xl font-semibold">Premium local takeaway feel</h2>
-        <p class="mt-3 leading-7 text-white/68">Dark luxury styling, warm food imagery and clear calls to action elevate the brand without losing its local identity.</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="menu" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-    <div class="mb-10 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
-      <div>
-        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Sample menu concept</p>
-        <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Classic Chinese favourites, presented beautifully</h2>
-      </div>
-      <p class="max-w-2xl text-white/65">These are placeholder dishes and sample prices to demonstrate structure and visual style. The final version would be updated with the real Happy Wok menu and pricing.</p>
-    </div>
-
-    <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
-        <img src="https://images.unsplash.com/photo-1603360946369-dc9bb6258143?auto=format&fit=crop&w=1200&q=80" alt="Sweet and sour chicken" class="h-48 w-full rounded-2xl object-cover" />
-        <h3 class="mt-5 text-2xl font-semibold">Sweet & Sour Chicken</h3>
-        <p class="mt-2 leading-7 text-white/65">Crispy chicken pieces in a glossy sweet and tangy sauce with peppers and pineapple.</p>
-        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Popular choice</span><span class="text-xl font-semibold">£5.00</span></div>
-      </div>
-
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
-        <img src="https://images.unsplash.com/photo-1512003867696-6d5ce6835040?auto=format&fit=crop&w=1200&q=80" alt="Chow mein" class="h-48 w-full rounded-2xl object-cover" />
-        <h3 class="mt-5 text-2xl font-semibold">Chicken Chow Mein</h3>
-        <p class="mt-2 leading-7 text-white/65">Wok tossed noodles with chicken, beansprouts, spring onion and savoury soy glaze.</p>
-        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">House favourite</span><span class="text-xl font-semibold">£5.00</span></div>
-      </div>
-
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
-        <img src="https://images.unsplash.com/photo-1555126634-323283e090fa?auto=format&fit=crop&w=1200&q=80" alt="Egg fried rice" class="h-48 w-full rounded-2xl object-cover" />
-        <h3 class="mt-5 text-2xl font-semibold">Egg Fried Rice</h3>
-        <p class="mt-2 leading-7 text-white/65">Fluffy rice wok fried with egg, spring onion and light seasoning. Ideal alongside any main dish.</p>
-        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Essential side</span><span class="text-xl font-semibold">£5.00</span></div>
-      </div>
-
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
-        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1200&q=80" alt="Crispy duck" class="h-48 w-full rounded-2xl object-cover" />
-        <h3 class="mt-5 text-2xl font-semibold">Crispy Shredded Duck</h3>
-        <p class="mt-2 leading-7 text-white/65">Tender shredded duck with cucumber, spring onion and a rich hoisin style sauce.</p>
-        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Premium pick</span><span class="text-xl font-semibold">£5.00</span></div>
-      </div>
-
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
-        <img src="https://images.unsplash.com/photo-1617622141573-30d85f8c8d17?auto=format&fit=crop&w=1200&q=80" alt="Spring rolls" class="h-48 w-full rounded-2xl object-cover" />
-        <h3 class="mt-5 text-2xl font-semibold">Vegetable Spring Rolls</h3>
-        <p class="mt-2 leading-7 text-white/65">Golden crisp spring rolls with a colourful vegetable filling and dipping sauce.</p>
-        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Starter</span><span class="text-xl font-semibold">£5.00</span></div>
-      </div>
-
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-6 shadow-glow">
-        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1200&q=80" alt="King prawn dish" class="h-48 w-full rounded-2xl object-cover" />
-        <h3 class="mt-5 text-2xl font-semibold">King Prawn in Black Bean Sauce</h3>
-        <p class="mt-2 leading-7 text-white/65">Juicy prawns with peppers and onion in a deep savoury black bean sauce.</p>
-        <div class="mt-4 flex items-center justify-between"><span class="text-amber-200">Seafood</span><span class="text-xl font-semibold">£5.00</span></div>
-      </div>
-    </div>
-
-    <div class="mt-10 rounded-[2rem] border border-amber-300/20 bg-amber-300/10 p-6 md:flex md:items-center md:justify-between">
-      <div>
-        <p class="text-sm uppercase tracking-[0.25em] text-amber-100">Menu note</p>
-        <p class="mt-2 max-w-3xl leading-7 text-white/80">This menu is intentionally illustrative. It is there to sell the visual concept and structure. Real dishes, categories, descriptions and prices can all be swapped in quickly.</p>
-      </div>
-      <a href="https://orderhappywok.co.uk/info" class="mt-4 inline-flex rounded-full bg-black px-6 py-3 font-semibold text-amber-200 hover:bg-black/80 md:mt-0">Order Online</a>
-    </div>
-  </section>
-
-  <section id="gallery" class="border-y border-white/10 bg-white/[0.03]">
-    <div class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-      <div class="mb-10">
-        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Gallery feel</p>
-        <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Rich imagery that makes people hungry</h2>
-      </div>
-
-      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-        <img src="https://images.unsplash.com/photo-1515003197210-e0cd71810b5f?auto=format&fit=crop&w=1200&q=80" alt="Chinese dish" class="h-72 w-full rounded-[1.75rem] object-cover" />
-        <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=1200&q=80" alt="Wok cooking" class="h-72 w-full rounded-[1.75rem] object-cover" />
-        <img src="https://images.unsplash.com/photo-1526318896980-cf78c088247c?auto=format&fit=crop&w=1200&q=80" alt="Noodles" class="h-72 w-full rounded-[1.75rem] object-cover" />
-        <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=1200&q=80" alt="Takeaway dishes" class="h-72 w-full rounded-[1.75rem] object-cover" />
-      </div>
-    </div>
-  </section>
-
-  <section id="reviews" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-    <div class="mb-10">
-      <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Trust and social proof</p>
-      <h2 class="mt-3 text-3xl font-semibold md:text-4xl">A website that feels loved locally</h2>
-    </div>
-
-    <div class="grid gap-6 lg:grid-cols-3">
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7 shadow-glow">
-        <div class="text-amber-200">★★★★★</div>
-        <p class="mt-4 text-lg leading-8 text-white/72">Absolutely delicious food and a website that finally makes the place look as good as the food tastes.</p>
-        <p class="mt-5 text-sm uppercase tracking-[0.2em] text-white/45">Sample review</p>
-      </div>
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7 shadow-glow">
-        <div class="text-amber-200">★★★★★</div>
-        <p class="mt-4 text-lg leading-8 text-white/72">Clear menu, easy ordering, great presentation and a much more modern feel for a trusted local takeaway.</p>
-        <p class="mt-5 text-sm uppercase tracking-[0.2em] text-white/45">Sample review</p>
-      </div>
-      <div class="rounded-[1.75rem] border border-white/10 bg-white/[0.03] p-7 shadow-glow">
-        <div class="text-amber-200">★★★★★</div>
-        <p class="mt-4 text-lg leading-8 text-white/72">This kind of layout gives the business much more credibility and would definitely increase online orders.</p>
-        <p class="mt-5 text-sm uppercase tracking-[0.2em] text-white/45">Sample review</p>
-      </div>
-    </div>
-  </section>
-
-  <section id="hours" class="border-y border-white/10 bg-white/[0.03]">
-    <div class="mx-auto grid max-w-7xl gap-8 px-6 py-20 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-      <div>
-        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Opening hours</p>
-        <h2 class="mt-3 text-3xl font-semibold md:text-4xl">Clear and easy to scan</h2>
-        <p class="mt-5 max-w-xl leading-8 text-white/68">Opening times are kept simple and visible, reducing friction for hungry customers deciding when to order.</p>
-      </div>
-
-      <div class="grid gap-3">
-        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Monday</span><span class="text-white/65">Closed</span></div>
-        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Tuesday</span><span class="text-white/65">5:00 PM to 10:00 PM</span></div>
-        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Wednesday</span><span class="text-white/65">5:00 PM to 10:00 PM</span></div>
-        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Thursday</span><span class="text-white/65">5:00 PM to 10:00 PM</span></div>
-        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Friday</span><span class="text-white/65">5:00 PM to 10:30 PM</span></div>
-        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Saturday</span><span class="text-white/65">5:00 PM to 10:30 PM</span></div>
-        <div class="flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-5 py-4"><span>Sunday</span><span class="text-white/65">5:00 PM to 10:00 PM</span></div>
-      </div>
-    </div>
-  </section>
-
-  <section id="contact" class="mx-auto max-w-7xl px-6 py-20 lg:px-10">
-    <div class="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
-      <div class="rounded-[2rem] border border-white/10 bg-white/[0.03] p-8 shadow-glow md:p-10">
-        <p class="text-sm uppercase tracking-[0.3em] text-amber-200/80">Contact and ordering</p>
-        <h2 class="mt-3 text-3xl font-semibold md:text-5xl">Ready to make this the new Happy Wok website?</h2>
-        <p class="mt-5 max-w-2xl text-lg leading-8 text-white/70">This concept is built to help Happy Wok feel more current, more premium and easier to order from. It can be refined with the real menu, logos, own photography and any delivery platform links.</p>
-
-        <div class="mt-8 flex flex-wrap gap-4">
-          <a href="https://orderhappywok.co.uk/info" class="rounded-full bg-amber-300 px-7 py-4 text-base font-semibold text-black hover:bg-amber-200">Order Online</a>
-          <a href="tel:01491413883" class="rounded-full border border-white/15 bg-white/5 px-7 py-4 text-base text-white hover:bg-white/10">Call Happy Wok</a>
-        </div>
-      </div>
-
-      <div class="rounded-[2rem] border border-white/10 bg-gradient-to-br from-amber-300/10 to-red-400/10 p-8 shadow-glow md:p-10">
-        <p class="text-sm uppercase tracking-[0.3em] text-amber-100">Real details used</p>
-        <ul class="mt-6 space-y-4 text-white/80">
-          <li><strong>Business:</strong> Happy Wok</li>
-          <li><strong>Address:</strong> 126 Greys Road, Henley-on-Thames, RG9 1QW</li>
-          <li><strong>Phone:</strong> <a href="tel:01491413883" class="hover:text-amber-200">01491 413 883</a></li>
-          <li><strong>Ordering link:</strong> orderhappywok.co.uk</li>
-          <li><strong>Purpose:</strong> sales concept website to show layout, look and feel</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <footer class="border-t border-white/10 bg-black/40">
-    <div class="mx-auto flex max-w-7xl flex-col gap-4 px-6 py-8 text-sm text-white/55 lg:flex-row lg:items-center lg:justify-between lg:px-10">
-      <p>Happy Wok website concept for presentation purposes.</p>
-      <div class="flex gap-5">
-        <a href="#menu" class="hover:text-white">Menu</a>
-        <a href="#hours" class="hover:text-white">Hours</a>
-        <a href="#contact" class="hover:text-white">Contact</a>
-      </div>
-    </div>
+  <footer>
+    Happy Wok. Authentic Chinese takeaway with a simple call first ordering experience.
   </footer>
 
+  <script>
+    const menuItems = [
+      {
+        category: "Starters",
+        name: "Vegetable Spring Rolls",
+        price: 4.80,
+        description: "Crisp rolls filled with seasoned vegetables."
+      },
+      {
+        category: "Starters",
+        name: "Prawn Toast",
+        price: 5.90,
+        description: "Golden fried sesame prawn toast."
+      },
+      {
+        category: "Starters",
+        name: "Crispy Seaweed",
+        price: 4.90,
+        description: "Classic sweet and savoury crispy seaweed."
+      },
+      {
+        category: "Starters",
+        name: "Salt and Pepper Chicken",
+        price: 6.80,
+        description: "Lightly spiced crispy chicken pieces."
+      },
+      {
+        category: "Duck Dishes",
+        name: "Crispy Aromatic Duck Quarter",
+        price: 10.90,
+        description: "Served with pancakes, cucumber, spring onion, and hoisin."
+      },
+      {
+        category: "Duck Dishes",
+        name: "Roast Duck in Plum Sauce",
+        price: 8.90,
+        description: "Tender roast duck in a rich plum glaze."
+      },
+      {
+        category: "Duck Dishes",
+        name: "Duck with Mushrooms",
+        price: 8.70,
+        description: "Sliced duck stir fried with mushrooms."
+      },
+      {
+        category: "Chicken Dishes",
+        name: "Sweet and Sour Chicken Hong Kong Style",
+        price: 8.20,
+        description: "A British takeaway favourite with vibrant sweet and sour sauce."
+      },
+      {
+        category: "Chicken Dishes",
+        name: "Chicken Curry",
+        price: 8.10,
+        description: "Classic Chinese curry with tender chicken."
+      },
+      {
+        category: "Chicken Dishes",
+        name: "Kung Po Chicken",
+        price: 8.40,
+        description: "Chicken with chilli, peanuts, and vegetables."
+      },
+      {
+        category: "Chicken Dishes",
+        name: "Chicken in Black Bean Sauce",
+        price: 8.40,
+        description: "Savoury black bean sauce with peppers and onions."
+      },
+      {
+        category: "Beef Dishes",
+        name: "Beef in Black Bean Sauce",
+        price: 8.90,
+        description: "Tender beef cooked in a classic black bean sauce."
+      },
+      {
+        category: "Beef Dishes",
+        name: "Crispy Shredded Beef",
+        price: 9.20,
+        description: "Crispy strips of beef in a sweet chilli glaze."
+      },
+      {
+        category: "Beef Dishes",
+        name: "Beef with Green Peppers",
+        price: 8.80,
+        description: "A comforting takeaway classic with peppers and onion."
+      },
+      {
+        category: "Chow Mein",
+        name: "Chicken Chow Mein",
+        price: 7.90,
+        description: "Soft noodles with chicken and vegetables."
+      },
+      {
+        category: "Chow Mein",
+        name: "Beef Chow Mein",
+        price: 8.30,
+        description: "Stir fried noodles with sliced beef."
+      },
+      {
+        category: "Chow Mein",
+        name: "Special Chow Mein",
+        price: 8.90,
+        description: "Chicken, beef, prawns, and vegetables."
+      },
+      {
+        category: "Rice Dishes",
+        name: "Egg Fried Rice",
+        price: 3.90,
+        description: "Fluffy rice with egg and spring onion."
+      },
+      {
+        category: "Rice Dishes",
+        name: "Special Fried Rice",
+        price: 7.60,
+        description: "A full takeaway favourite packed with mixed meats."
+      },
+      {
+        category: "Rice Dishes",
+        name: "Boiled Rice",
+        price: 3.40,
+        description: "Perfect alongside your chosen dishes."
+      },
+      {
+        category: "Chef's Specials",
+        name: "Happy Wok Special",
+        price: 9.80,
+        description: "Mixed meat, king prawns, and seasonal vegetables in chef's sauce."
+      },
+      {
+        category: "Chef's Specials",
+        name: "King Prawn Satay",
+        price: 9.60,
+        description: "King prawns in a rich satay sauce."
+      },
+      {
+        category: "Chef's Specials",
+        name: "Salt and Pepper King Prawns",
+        price: 9.70,
+        description: "Crispy king prawns with garlic, chilli, and onion."
+      },
+      {
+        category: "Set Meals",
+        name: "Set Meal for One",
+        price: 13.90,
+        description: "Starter, main dish, and rice or noodles."
+      },
+      {
+        category: "Set Meals",
+        name: "Set Meal for Two",
+        price: 28.90,
+        description: "A balanced selection of favourites for two people."
+      },
+      {
+        category: "Set Meals",
+        name: "Family Meal",
+        price: 42.90,
+        description: "A generous selection ideal for sharing."
+      }
+    ];
+
+    const basket = [];
+
+    function formatPrice(value) {
+      return `£${value.toFixed(2)}`;
+    }
+
+    function slugify(text) {
+      return text.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    }
+
+    function renderMenu() {
+      const categoryContainers = document.querySelectorAll(".menu-grid");
+
+      categoryContainers.forEach((container) => {
+        const category = container.dataset.category;
+        const items = menuItems.filter((item) => item.category === category);
+
+        container.innerHTML = items
+          .map(
+            (item) => `
+              <article class="menu-card">
+                <div class="menu-card-top">
+                  <h4>${item.name}</h4>
+                  <span class="price">${formatPrice(item.price)}</span>
+                </div>
+                <p>${item.description}</p>
+                <button onclick="addToBasket('${item.name.replace(/'/g, "\\'")}')">Add to Order</button>
+              </article>
+            `
+          )
+          .join("");
+      });
+    }
+
+    function addToBasket(name) {
+      const foundMenuItem = menuItems.find((item) => item.name === name);
+      const existing = basket.find((item) => item.name === name);
+
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        basket.push({
+          name: foundMenuItem.name,
+          price: foundMenuItem.price,
+          qty: 1
+        });
+      }
+
+      renderBasket();
+      document.getElementById("basket").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function changeQty(name, change) {
+      const item = basket.find((entry) => entry.name === name);
+      if (!item) return;
+
+      item.qty += change;
+
+      if (item.qty <= 0) {
+        removeItem(name);
+        return;
+      }
+
+      renderBasket();
+    }
+
+    function removeItem(name) {
+      const index = basket.findIndex((item) => item.name === name);
+      if (index !== -1) {
+        basket.splice(index, 1);
+      }
+      renderBasket();
+    }
+
+    function getTotal() {
+      return basket.reduce((sum, item) => sum + item.price * item.qty, 0);
+    }
+
+    function renderBasket() {
+      const basketList = document.getElementById("basketList");
+      const basketTotal = document.getElementById("basketTotal");
+
+      if (basket.length === 0) {
+        basketList.innerHTML = `
+          <div class="empty-basket">
+            No dishes selected yet. Add items from the menu to build your order before calling.
+          </div>
+        `;
+        basketTotal.textContent = formatPrice(0);
+        return;
+      }
+
+      basketList.innerHTML = basket
+        .map(
+          (item) => `
+            <div class="basket-item">
+              <div class="basket-row">
+                <div>
+                  <div class="basket-name">${item.name}</div>
+                  <div class="basket-meta">${formatPrice(item.price)} each</div>
+                </div>
+                <div class="basket-name">${formatPrice(item.price * item.qty)}</div>
+              </div>
+              <div class="basket-controls">
+                <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', -1)">−</button>
+                <span>Qty ${item.qty}</span>
+                <button class="qty-btn" onclick="changeQty('${item.name.replace(/'/g, "\\'")}', 1)">+</button>
+                <button class="remove-btn" onclick="removeItem('${item.name.replace(/'/g, "\\'")}')">Remove</button>
+              </div>
+            </div>
+          `
+        )
+        .join("");
+
+      basketTotal.textContent = formatPrice(getTotal());
+    }
+
+    function copyOrderList() {
+      if (basket.length === 0) {
+        alert("Your basket is empty.");
+        return;
+      }
+
+      const lines = [
+        "Happy Wok Order",
+        "",
+        ...basket.map((item) => `${item.qty} x ${item.name} ${formatPrice(item.price * item.qty)}`),
+        "",
+        `Total: ${formatPrice(getTotal())}`
+      ];
+
+      navigator.clipboard.writeText(lines.join("\n"))
+        .then(() => {
+          alert("Your order list has been copied.");
+        })
+        .catch(() => {
+          alert("Could not copy automatically. Please try again.");
+        });
+    }
+
+    document.getElementById("copyOrderBtn").addEventListener("click", copyOrderList);
+
+    renderMenu();
+    renderBasket();
+  </script>
 </body>
 </html>
